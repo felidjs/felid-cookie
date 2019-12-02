@@ -13,7 +13,7 @@ describe('parse cookies', () => {
       res.send('test')
       done()
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', 'foo=bar')
@@ -28,7 +28,7 @@ describe('set cookies', () => {
     instance.get('/test', (req, res) => {
       res.cookie('foo', 'bar').send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
@@ -37,14 +37,14 @@ describe('set cookies', () => {
         done()
       })
   })
-  
+
   test('Should set multiple cookies with the same name', (done) => {
     const instance = new Felid()
     instance.plugin(cookiePlugin)
     instance.get('/test', (req, res) => {
       res.cookie('foo', 'bar').cookie('foo', 'baz').send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
@@ -67,7 +67,7 @@ describe('set cookies', () => {
         multi: ['x', 'y']
       }).send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
@@ -81,7 +81,7 @@ describe('set cookies', () => {
         done()
       })
   })
-  
+
   test('Should set correct cookies using combined methods', (done) => {
     const instance = new Felid()
     instance.plugin(cookiePlugin)
@@ -93,7 +93,7 @@ describe('set cookies', () => {
         })
         .send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
@@ -116,7 +116,7 @@ describe('sign cookies', () => {
     instance.get('/test', (req, res) => {
       res.cookie('foo', 'bar').send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
@@ -138,7 +138,7 @@ describe('sign cookies', () => {
       res.send('test')
       done()
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', cookie.serialize('foo', cookieSignature.sign('bar', secret)))
@@ -157,7 +157,7 @@ describe('sign cookies', () => {
       res.send('test')
       done()
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', cookie.serialize('foo', cookieSignature.sign('bar', secret)))
@@ -175,7 +175,7 @@ describe('sign cookies', () => {
       res.send('test')
       done()
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', cookie.serialize('foo', cookieSignature.sign('bar', anotherSecret)))
@@ -193,7 +193,7 @@ describe('options', () => {
     instance.get('/test1', (req, res) => {
       res.cookie('foo', 'bar', {}).send('test')
     })
-  
+
     const inject = injectar(instance.lookup())
     let res
     res = await inject.get('/test').end()
@@ -201,7 +201,7 @@ describe('options', () => {
     res = await inject.get('/test1').end()
     expect(res.headers['set-cookie']).toMatch('HttpOnly')
   })
-  
+
   test('Should set correct cookie according to options', (done) => {
     const instance = new Felid()
     instance.plugin(cookiePlugin)
@@ -212,19 +212,19 @@ describe('options', () => {
         path: '/'
       }).send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .end((err, res) => {
         expect(err).toBe(null)
         const cookies = cookie.parse(res.headers['set-cookie'])
-        expect(cookies['Domain']).toBe('/')
+        expect(cookies.Domain).toBe('/')
         expect(cookies['Max-Age']).toBe('30')
-        expect(cookies['Path']).toBe('/')
+        expect(cookies.Path).toBe('/')
         done()
       })
   })
-  
+
   test('Should set correct cookie according to global options and specific options', async () => {
     const instance = new Felid()
     instance.plugin(cookiePlugin, {
@@ -242,21 +242,21 @@ describe('options', () => {
         httpOnly: true
       }).send('test')
     })
-  
+
     const inject = injectar(instance.lookup())
     let res, cookies
     res = await inject.get('/test').end()
     cookies = cookie.parse(res.headers['set-cookie'])
     expect(res.headers['set-cookie']).not.toMatch('HttpOnly')
-    expect(cookies['Domain']).toBe('/')
-    expect(cookies['Path']).toBe('/path')
+    expect(cookies.Domain).toBe('/')
+    expect(cookies.Path).toBe('/path')
     res = await inject.get('/test1').end()
     cookies = cookie.parse(res.headers['set-cookie'])
     expect(res.headers['set-cookie']).toMatch('HttpOnly')
-    expect(cookies['Domain']).toBe('/')
-    expect(cookies['Path']).toBe('/')
+    expect(cookies.Domain).toBe('/')
+    expect(cookies.Path).toBe('/')
   })
-  
+
   test('Should pass options to `cookie.parse` correctly', (done) => {
     function decoder () {
       return 'test'
@@ -272,13 +272,13 @@ describe('options', () => {
       res.send('test')
       done()
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', 'foo=bar')
       .end()
   })
-  
+
   test('Should set custom decorator property name', (done) => {
     const secret = 'key'
     const instance = new Felid()
@@ -300,7 +300,7 @@ describe('options', () => {
       })
       res.send('test')
     })
-  
+
     injectar(instance.lookup())
       .get('/test')
       .header('cookie', cookie.serialize('foo', cookieSignature.sign('bar', secret)))

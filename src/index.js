@@ -5,7 +5,7 @@ function parseReqCookie (decoratorKey, options, secret) {
   return function (req, res) {
     const cookieHeader = req.header('cookie')
     if (cookieHeader) {
-      let cookies = cookie.parse(cookieHeader, options)
+      const cookies = cookie.parse(cookieHeader, options)
       if (secret) {
         for (const key in cookies) {
           cookies[key] = cookieSignature.unsign(cookies[key], secret)
@@ -49,7 +49,7 @@ function plugin (felid, options) {
   function resSetCookie (key, value, options) {
     const serialized = cookie.serialize(key,
       rootOptions.secret ? cookieSignature.sign(value, rootOptions.secret) : value,
-      options ? { ...rootOptions, ...options} : rootOptions)
+      options ? { ...rootOptions, ...options } : rootOptions)
     let headers = this.getHeader('set-cookie')
     if (!headers) {
       this.setHeader('set-cookie', serialized)
