@@ -1,0 +1,43 @@
+{
+  "name": "felid-cookie",
+  "version": "1.0.0",
+  "description": "Send files for Felid.js",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "standard --fix src/*.js test/*.js | snazzy",
+    "test": "npm run lint && npm run unit",
+    "unit": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felidjs/felid-cookie.git"
+  },
+  "keywords": [
+    "cookie",
+    "felid",
+    "felid-plugin"
+  ],
+  "author": "zoron (https://github.com/fralonra/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felidjs/felid-cookie/issues"
+  },
+  "homepage": "https://github.com/felidjs/felid-cookie#readme",
+  "devDependencies": {
+    "felid": "^0.0.4",
+    "injectar": "^1.4.0",
+    "jest": "^24.9.0",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1"
+  },
+  "dependencies": {
+    "cookie": "^0.4.0",
+    "cookie-signature": "^1.1.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
+}
