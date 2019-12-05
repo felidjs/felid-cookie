@@ -58,8 +58,8 @@ Some has default values:
 
 - **request.cookies**: The parsed request cookies.
 - **request.unsign(key: String, secret?: String)**: Unsign the given cookie pair. The secret passed here will override the plugin secret.
-- **request.cookie(key: String, value: String, options?: Object)**: Set a single cookie pair. The options passed here will override the plugin options.
-- **request.cookies(cookies: Object, options?: Object)**: Set a set of cookie pairs. The options passed here will override the plugin options.
+- **response.cookie(key: String, value: String, options?: Object)**: Set a single cookie pair. The options passed here will override the plugin options.
+- **response.cookies(cookies: Object, options?: Object)**: Set a set of cookie pairs. The options passed here will override the plugin options.
 
 ## License
 
