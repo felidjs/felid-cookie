@@ -34,9 +34,9 @@ function plugin (felid, options) {
     ...rootOptions.decorator
   }
   felid.decorateRequest(decoratorKeys.reqGetCookie, {})
-  felid.decorateRequest(decoratorKeys.unsignCookie, unsignCookie)
-  felid.decorateResponse(decoratorKeys.resSetCookie, resSetCookie)
-  felid.decorateResponse(decoratorKeys.resSetCookies, resSetCookies)
+  felid.decorateRequest(decoratorKeys.unsignCookie, () => unsignCookie)
+  felid.decorateResponse(decoratorKeys.resSetCookie, () => resSetCookie)
+  felid.decorateResponse(decoratorKeys.resSetCookies, () => resSetCookies)
 
   felid.use(parseReqCookie(decoratorKeys.reqGetCookie, rootOptions.parseOptions, rootOptions.unsign ? rootOptions.secret : undefined))
 

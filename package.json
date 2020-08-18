@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "Send files for Felid.js",
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "lint": "standard --fix src/*.js test/*.js | snazzy",
     "test": "npm run lint && npm run unit",
@@ -28,7 +31,7 @@
     "cookie-signature": "^1.1.0"
   },
   "devDependencies": {
-    "felid": "^0.0.4",
+    "felid": "^0.1.0-alpha.4",
     "injectar": "^1.4.0",
     "jest": "^24.9.0",
     "pre-commit": "^1.2.2",
