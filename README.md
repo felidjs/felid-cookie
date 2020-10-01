@@ -1,6 +1,9 @@
 # felid-cookie
 
-[![npm version](https://img.shields.io/npm/v/felid-cookie.svg)](https://www.npmjs.com/package/felid-cookie) [![Build Status](https://travis-ci.com/felidjs/felid-cookie.svg?branch=master)](https://travis-ci.com/felidjs/felid-cookie) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm version](https://img.shields.io/npm/v/felid-cookie.svg)](https://www.npmjs.com/package/felid-cookie)
+![Node.js CI](https://github.com/felidjs/felid-cookie/workflows/Node.js%20CI/badge.svg)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![codecov](https://codecov.io/gh/felidjs/felid-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/felidjs/felid-cookie)
 
 A [Felid](https://github.com/felidjs/felid) plugin that provides support for cookies.
 
